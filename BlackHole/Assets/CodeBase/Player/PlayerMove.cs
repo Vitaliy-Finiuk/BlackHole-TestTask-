@@ -7,6 +7,9 @@ namespace CodeBase.Player
 {
     public class PlayerMove : MonoBehaviour
     {
+
+        #region SerializedField
+
         [Header("Hole mesh")]
         [SerializeField] private MeshFilter _meshFilter;
         [SerializeField] private MeshCollider _meshCollider;
@@ -20,6 +23,10 @@ namespace CodeBase.Player
         [Space]
         [SerializeField] private float _moveSpeed;
 
+        #endregion
+
+        #region PrivateFields
+
         private Mesh _mesh;
         private List<int> _holeVertices;
         private List<Vector3> _offSets;
@@ -27,6 +34,10 @@ namespace CodeBase.Player
 
         private float _horizontalAxis, _verticalAxis;
         private Vector3 _touch, _targetPosition;
+
+        #endregion
+
+        #region UnityFunctions
 
         private void Start()
         {
@@ -54,12 +65,17 @@ namespace CodeBase.Player
             }
         }
 
+        #endregion
+
+        #region Methods
+
         private void MoveHole()
         {
             _horizontalAxis = Input.GetAxis("Mouse X");
             _verticalAxis = Input.GetAxis("Mouse Y");
 
-            _touch = Vector3.Lerp(_holeCenter.position, _holeCenter.position + new Vector3(_horizontalAxis, 0f, _verticalAxis), _moveSpeed * Time.deltaTime);
+            _touch = Vector3.Lerp(_holeCenter.position, _holeCenter.position + new Vector3(_horizontalAxis, 0f, 
+                _verticalAxis), _moveSpeed * Time.deltaTime);
 
             _targetPosition = new Vector3(
                 Mathf.Clamp(_touch.x, -_moveLimits.x, _moveLimits.x), _touch.y,
@@ -107,10 +123,17 @@ namespace CodeBase.Player
                 .SetLoops(-1, LoopType.Incremental);
         }
 
+        #endregion
+        
+        #region UnityEditor
+
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(_holeCenter.position, _radius);
         }
+
+        #endregion
+
     }
 }

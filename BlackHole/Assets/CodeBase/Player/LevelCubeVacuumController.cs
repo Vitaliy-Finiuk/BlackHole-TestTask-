@@ -10,24 +10,39 @@ namespace CodeBase.Player
         OnRise
     }
     
+    [RequireComponent(typeof(Rigidbody))]
     public class LevelCubeVacuumController : MonoBehaviour
     {
+        #region SerializedField
+
         [Header("General Variables")]
         [Range(0, 10f)] [SerializeField] private float _shrinkSpeed; 
-        [Range(0, 100f)] [SerializeField] private float _risingSpeed; 
+        [Range(0.05f, 100f)] [SerializeField] private float _risingSpeed; 
         [Range(0, 1000f)] [SerializeField] private float _risingRotationSpeed; 
         [Range(0, 1000f)] [SerializeField] private float _vacuumSpeed; 
-    
+        
+        #endregion 
+
+        #region Fields
+
         public LevelCubeStates CurrentState;
 
         [Header("References")]
         private Rigidbody _rigidbody;
-    
+
+        #endregion
+        
+        #region UnityFunctions
+
         private void Start() => 
             _rigidbody = GetComponent<Rigidbody>();
 
         private void Update() => 
             ApplyState();
+
+        #endregion
+        
+        #region Methods
 
         private void ApplyState()
         {
@@ -43,6 +58,9 @@ namespace CodeBase.Player
                     break;
             }
         }
+
+
+        #endregion
 
         #region ObjectStates
 
