@@ -6,7 +6,6 @@ TagManager:
   tags:
   - HoleVacuumColl
   - HoleInnerTrigger
-  - LevelCube
   - Killzone
   layers:
   - Default
@@ -26,7 +25,7 @@ TagManager:
   - 
   - 
   - Floors
-  - LevelCubes
+  - 
   - 
   - 
   - 
