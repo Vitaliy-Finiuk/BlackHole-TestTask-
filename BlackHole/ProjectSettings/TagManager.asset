@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - HoleVacuumColl
+  - HoleInnerTrigger
+  - LevelCube
+  - Killzone
   layers:
   - Default
   - TransparentFX
@@ -21,8 +25,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Floors
+  - LevelCubes
   - 
   - 
   - 
